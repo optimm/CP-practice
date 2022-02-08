@@ -55,24 +55,56 @@ using namespace std;
 //  using omset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 // find_by_order(k)  returns iterator to kth element starting from 0;
 // order_of_key(k) returns count of elements strictly smaller than k;
+
 ll read(vector<ll> &v);
 void print(vector<ll> &v);
 
 void solve()
 {
     int n;
-    cin >> n;
-    vl a(n);
-    // ll sum = read(a);
-    ll sum = 0;
-    // mll mp;
-    for (int i = 0; i < n; i++)
+    char c;
+    cin >> n >> c;
+    string s;
+    cin >> s;
+    ll o = 0, e = 0;
+
+    f(i, n)
     {
-        cin >> a[i];
-        sum += a[i];
-        // mp[a[i]]++;
+        if (s[i] != c)
+        {
+            (i + 1) % 2 == 0 ? (e++) : (o++);
+        }
     }
 
+    if (e == 0 && o == 0)
+    {
+        cout << "0\n";
+        return;
+    }
+
+    for (ll i = 1; i <= n; i++)
+    {
+
+        bool flag = true;
+        for (ll j = i; j <= n; j += i)
+        {
+            if (s[j - 1] != c)
+            {
+                flag = false;
+                break;
+            }
+        }
+
+        if (flag == true)
+        {
+            cout << "1\n"
+                 << i << "\n";
+            return;
+        }
+    }
+
+    cout << "2\n"
+         << n << " " << n - 1 << "\n";
     return;
     // print(v);
 }

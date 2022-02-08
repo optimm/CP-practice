@@ -57,23 +57,36 @@ using namespace std;
 // order_of_key(k) returns count of elements strictly smaller than k;
 ll read(vector<ll> &v);
 void print(vector<ll> &v);
-
+bool isSorted(vl a)
+{
+    f(i, a.size() - 1)
+    {
+        if (a[i] > a[i + 1])
+            return false;
+    }
+    return true;
+}
 void solve()
 {
-    int n;
-    cin >> n;
+    int n, x;
+    cin >> n >> x;
     vl a(n);
-    // ll sum = read(a);
-    ll sum = 0;
-    // mll mp;
-    for (int i = 0; i < n; i++)
+    ll sum = read(a);
+    if (isSorted(a) || n >= 2 * x)
     {
-        cin >> a[i];
-        sum += a[i];
-        // mp[a[i]]++;
+        yes return;
     }
-
-    return;
+    vl b = a;
+    sor(b);
+    // print(b);
+    fo(i, n - x, x)
+    {
+        if (a[i] != b[i])
+        {
+            no return;
+        }
+    }
+    yes return;
     // print(v);
 }
 
